@@ -22,7 +22,7 @@ else: # Zone B
     close_marker = 34
     far_marker = 33
 
-while match_running():
+"""while match_running():
     markers = R.see()
 
     can_see_marker = False
@@ -37,3 +37,12 @@ while match_running():
 
     if not can_see_marker:
         print("Cannot see")
+"""
+
+def calibrate():
+
+    forward_dist(2)
+
+    print("Done")
+
+calibrate()

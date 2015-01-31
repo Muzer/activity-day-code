@@ -25,6 +25,9 @@ def forward(R, time):
 
     stop_all_motors(R)
 
+def forward_dist(R, dist):
+    forward(distance_to_time(dist))
+
 def stop_all_motors(R):
     R.motors[0].m0.power = 0
     R.motors[0].m1.power = 0
