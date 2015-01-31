@@ -5,6 +5,6 @@ import move
 
 
 R = Robot()
-move_forward(R)
+move.forward(R)
 
 
