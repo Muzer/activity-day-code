@@ -1,14 +1,14 @@
 import time
 
-LEFT_CORRECTION = 0.95
-RIGHT_CORRECTION = 1
+LEFT_CORRECTION = 1
+RIGHT_CORRECTION = 0.91
 
 DEGREES_PER_SECOND = 90
-DISTANCE_PER_SECOND = 0.85 # meters per second
+DISTANCE_PER_SECOND = 0.95 # meters per second
 
 TURNING_POWER = 30
 
-SPEED = 70
+SPEED = 80
 
 '''
 ASCII art of the diagram
