@@ -1,12 +1,14 @@
 import time
 
-LEFT_CORRECTION = 1
+LEFT_CORRECTION = 0.95
 RIGHT_CORRECTION = 1
 
 DEGREES_PER_SECOND = 90
-DISTANCE_PER_SECOND = 1 #meters
+DISTANCE_PER_SECOND = 0.85 # meters per second
 
 TURNING_POWER = 30
+
+SPEED = 70
 
 '''
 ASCII art of the diagram
@@ -18,15 +20,15 @@ m[0].m1 0-----0 m[0].m1
 
 '''
 
-def forward(R, time):
-    R.motors[0].m0.power = 100 * LEFT_CORRECTION
-    R.motors[0].m1.power = 100 * RIGHT_CORRECTION
-    time.sleep(time)
+def forward(R, t):
+    R.motors[0].m0.power = SPEED * RIGHT_CORRECTION
+    R.motors[0].m1.power = -SPEED * LEFT_CORRECTION
+    time.sleep(t)
 
     stop_all_motors(R)
 
 def forward_dist(R, dist):
-    forward(distance_to_time(dist))
+    forward(R, distance_to_time(dist))
 
 def stop_all_motors(R):
     R.motors[0].m0.power = 0

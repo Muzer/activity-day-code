@@ -42,7 +42,7 @@ else: # Zone B
 
 def calibrate():
 
-    forward_dist(2)
+    move.forward_dist(R, 2)
 
     print("Done")
 
