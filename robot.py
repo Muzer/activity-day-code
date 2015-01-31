@@ -6,12 +6,8 @@ import ultrasound
 from sr import *
 
 R = Robot.setup()
-
-
 R.ruggeduino_set_handler_by_fwver("SRus", ultrasound.USRuggeduino)
-
 R.init()
-
 R.wait_start()
 
 MATCH_LENGTH = 2 * 60
@@ -31,6 +27,17 @@ else: # Zone B
     close_marker = 34
     far_marker = 33
 
+def calibrate():
+
+    move.forward_dist(R, 2)
+
+    print("Done")
+
+#print R.ruggeduinos[0].distance()
+#calibrate()
+strategy.charge_and_swerve(R)
+
+
 
 """while match_running():
     markers = R.see()
@@ -48,13 +55,3 @@ else: # Zone B
     if not can_see_marker:
         print("Cannot see")
 """
-
-def calibrate():
-
-    move.forward_dist(R, 2)
-
-    print("Done")
-
-#print R.ruggeduinos[0].distance()
-#calibrate()
-strategy.charge_and_swerve()

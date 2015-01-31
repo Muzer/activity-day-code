@@ -8,9 +8,9 @@ def basic(R):
     pass
 
 
-def charge_and_swerve():
+def charge_and_swerve(R):
 
-    move.forward_dist(R, 1.7)
+    move.forward_dist(R, 0.7)
     move.slowly_stop_all_motors(R)
     move.scoop_left(R, 90)
 
