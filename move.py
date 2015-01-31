@@ -16,7 +16,7 @@ ASCII art of the diagram
            0 m[1].m0
           z z
          z   z
-m[0].m1 0-----0 m[0].m1
+m[0].m1 0-----0 m[0].m0
 
 '''
 
@@ -35,14 +35,19 @@ def stop_all_motors(R):
     R.motors[0].m1.power = 0
     R.motors[1].m0.power = 0
 
-def slowly_stop_all_motors(R):
-    i = R.motors[0].m0.power
-    while i > 0:
-        R.motors[0].m0.power = i
-        R.motors[0].m1.power = i
-        R.motors[1].m0.power = i
+def slowly_stop_all_motors(R, current_power):
+    if(current_power > 0):
+        step = -1
+    else:
+        step = 1
 
-        i -= 1
+    i = current_power;
+
+    while i != 0:
+        R.motors[0].m0.power += i
+        R.motors[0].m1.power -= i
+        i += step
+        time.sleep(0.05)
 
 def left(R, degrees):
     R.motors[0].m0.power = TURNING_POWER
