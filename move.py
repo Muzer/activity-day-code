@@ -30,6 +30,15 @@ def stop_all_motors(R):
     R.motors[0].m1.power = 0
     R.motors[1].m0.power = 0
 
+def slowly_stop_all_motors(R):
+    i = R.motors[0].m0.power
+    while i > 0:
+        R.motors[0].m0.power = i
+        R.motors[0].m1.power = i
+        R.motors[1].m0.power = i
+
+        i -= 1
+
 def left(R, degrees):
     R.motors[0].m0.power = TURNING_POWER
     R.motors[0].m1.power = TURNING_POWER
