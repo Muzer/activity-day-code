@@ -1,9 +1,9 @@
 #!/usr/bin/env python2
-
-from sr import *
 import move
-
 import time
+from sr import *
+
+R = Robot()
 
 match_length = 2 * 60
 start_time = time.clock()
@@ -12,8 +12,6 @@ def match_running():
     match_time = time.clock() - start_time
 
     return match_time < match_length
-
-R = Robot()
 
 center_marker = 32
 
