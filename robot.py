@@ -30,7 +30,7 @@ while match_running():
     for marker in markers:
         if marker.info.code == far_marker: # The marker in the opposite zone
             # move towards marker
-            move.forward(R, 2)
+            move.forward(R, marker.dist)
 
             can_see_marker = True
 
