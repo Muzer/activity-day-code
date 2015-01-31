@@ -7,6 +7,7 @@ from sr import *
 
 R = Robot.setup()
 
+
 R.ruggeduino_set_handler_by_fwver("SRus", ultrasound.USRuggeduino)
 
 R.init()
@@ -33,8 +34,16 @@ else: # Zone B
 def charge_and_swerve():
 
     move.forward_dist(R, 1.7)
+    move.slowly_stop_all_motors(R)
+    move.scoop_left(R, 90)
 
-    move.slowly_stop_all_motors(R, 80)
+    move.forward_dist(R, 1)
+
+    '''
+    move.forward_dist(R, 1.7)
+    move.slowly_stop_all_motors(R)
+    '''
+
 
 """while match_running():
     markers = R.see()
@@ -59,6 +68,6 @@ def calibrate():
 
     print("Done")
 
-print R.ruggeduinos[0].distance()
+#print R.ruggeduinos[0].distance()
 #calibrate()
 charge_and_swerve()

@@ -3,12 +3,16 @@ import time
 LEFT_CORRECTION = 1
 RIGHT_CORRECTION = 0.91
 
-DEGREES_PER_SECOND = 90
+FRONT_TURN_CORRECTION = -1
+LEFT_TURN_CORRECTION = 1
+RIGHT_TURN_CORRECTION = 1
+
+DEGREES_PER_SECOND = 210.0
 DISTANCE_PER_SECOND = 0.95 # meters per second
 
-TURNING_POWER = 30
+TURNING_POWER = 70.0
 
-SPEED = 80
+SPEED = 80.0
 
 '''
 ASCII art of the diagram
@@ -35,30 +39,45 @@ def stop_all_motors(R):
     R.motors[0].m1.power = 0
     R.motors[1].m0.power = 0
 
-def slowly_stop_all_motors(R, current_power):
-    if(current_power > 0):
-        step = -1
-    else:
-        step = 1
+def slowly_stop_all_motors(R):
+    print "Slowly ramping down"
+    R.motors[0].m0.use_break = False
+    R.motors[0].m1.use_break = False
 
-    i = current_power;
+    R.motors[0].m0.power = 0
+    R.motors[0].m1.power = 0
+    time.sleep(0.3)
 
-    while i != 0:
-        R.motors[0].m0.power += i
-        R.motors[0].m1.power -= i
-        i += step
-        time.sleep(0.05)
+    R.motors[0].m0.use_break = True
+    R.motors[0].m1.use_break = True
 
 def left(R, degrees):
-    R.motors[0].m0.power = TURNING_POWER
-    R.motors[0].m1.power = TURNING_POWER
-    R.motors[1].m0.power = TURNING_POWER
+    R.motors[0].m0.power = TURNING_POWER * RIGHT_TURN_CORRECTION
+    R.motors[0].m1.power = TURNING_POWER * LEFT_TURN_CORRECTION
+    R.motors[1].m0.power = TURNING_POWER * FRONT_TURN_CORRECTION
     time.sleep(abs(degrees / DEGREES_PER_SECOND))
 
     stop_all_motors(R)
+
+def scoop_left(R, degrees):
+    R.motors[0].m0.power = TURNING_POWER * RIGHT_TURN_CORRECTION
+    R.motors[1].m0.power = TURNING_POWER * FRONT_TURN_CORRECTION
+    time.sleep(abs(degrees / DEGREES_PER_SECOND))
+
+    stop_all_motors(R)
+
+def scoop_right(R, degrees):
+    R.motors[0].m0.power = TURNING_POWER * RIGHT_TURN_CORRECTION
+    R.motors[1].m0.power = TURNING_POWER * FRONT_TURN_CORRECTION
+    time.sleep(abs(degrees / DEGREES_PER_SECOND))
+
+    stop_all_motors(R)
+
 
 def right(R, degrees):
     left(R, -degrees)
 
 def distance_to_time(distance):
     return (distance / DISTANCE_PER_SECOND)
+
+
