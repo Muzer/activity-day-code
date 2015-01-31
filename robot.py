@@ -1,14 +1,14 @@
-#!/usr/bin/env python2
 import move
 import strategy
 import time
-import ultrasound
-from sr import *
+#import ultrasound
+from sr.robot import *
 
-R = Robot.setup()
-R.ruggeduino_set_handler_by_fwver("SRus", ultrasound.USRuggeduino)
-R.init()
-R.wait_start()
+#R = Robot.setup()
+#R.ruggeduino_set_handler_by_fwver("SRus", ultrasound.USRuggeduino)
+#R.init()
+#R.wait_start()
+R = Robot()
 
 MATCH_LENGTH = 2 * 60
 start_time = time.clock()
@@ -35,6 +35,7 @@ def calibrate():
 
 #print R.ruggeduinos[0].distance()
 #calibrate()
+#strategy.charge_and_swerve_F_minus(R)
 strategy.charge_and_swerve(R)
 
 

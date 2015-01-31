@@ -7,20 +7,20 @@ FRONT_TURN_CORRECTION = -1
 LEFT_TURN_CORRECTION = 1
 RIGHT_TURN_CORRECTION = 1
 
-DEGREES_PER_SECOND = 210.0
-DISTANCE_PER_SECOND = 0.95 # meters per second
+DEGREES_PER_SECOND = 180.0
+DISTANCE_PER_SECOND = 0.7 # meters per second
 
-TURNING_POWER = 70.0
+TURNING_POWER = 60.0
 
-SPEED = 80.0
+SPEED = 70.0
 
 '''
 ASCII art of the diagram
 
-           0 m[1].m0
+           0 motors[1].m0
           z z
          z   z
-m[0].m1 0-----0 m[0].m0
+m[0].m1 0-----0 motors[0].m0
 
 '''
 
@@ -79,5 +79,3 @@ def right(R, degrees):
 
 def distance_to_time(distance):
     return (distance / DISTANCE_PER_SECOND)
-
-
