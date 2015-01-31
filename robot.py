@@ -23,6 +23,12 @@ else: # Zone B
     close_marker = 34
     far_marker = 33
 
+def charge_and_swerve():
+
+    move.forward_dist(R, 1.7)
+
+    move.slowly_stop_all_motors(R, 80)
+
 """while match_running():
     markers = R.see()
 
@@ -46,4 +52,5 @@ def calibrate():
 
     print("Done")
 
-calibrate()
+#calibrate()
+charge_and_swerve()
