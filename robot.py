@@ -1,5 +1,6 @@
 #!/usr/bin/env python2
 import move
+import strategy
 import time
 from sr import *
 
