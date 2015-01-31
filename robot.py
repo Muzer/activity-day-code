@@ -5,13 +5,13 @@ from sr import *
 
 R = Robot()
 
-match_length = 2 * 60
+MATCH_LENGTH = 2 * 60
 start_time = time.clock()
 
 def match_running():
     match_time = time.clock() - start_time
 
-    return match_time < match_length
+    return match_time < MATCH_LENGTH
 
 center_marker = 32
 
