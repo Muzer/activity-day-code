@@ -67,7 +67,7 @@ def scoop_left(R, degrees):
     stop_all_motors(R)
 
 def scoop_right(R, degrees):
-    R.motors[0].m0.power = TURNING_POWER * RIGHT_TURN_CORRECTION
+    R.motors[0].m1.power = TURNING_POWER * LEFT_TURN_CORRECTION
     R.motors[1].m0.power = TURNING_POWER * FRONT_TURN_CORRECTION
     time.sleep(abs(degrees / DEGREES_PER_SECOND))
 
